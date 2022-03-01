@@ -55,7 +55,8 @@ def run():
         print("WALLET =  ",s['wallet'])
         print("POOL   =  ",s['pool'])
         print("PASS   =  ",s['password'])
-        time.sleep(2)
+        print("\n\n")
+        time.sleep(6)
         os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']} -p {s['password']} -t {cpu}")
     except:
         push = {'MINER': '','CPU': 1}
