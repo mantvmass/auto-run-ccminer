@@ -14,6 +14,7 @@ chmod +x run-miner
 apt-get install python3 -y
 apt-get install pip -y
 python3 -m pip install progress
+python3 -m pip install requests
 
 
 mv src_run_ccminer ../../etc
