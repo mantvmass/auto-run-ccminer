@@ -41,23 +41,27 @@ def run():
         load = set.read()
         loads = json.loads(load)
         miner = loads['MINER']
+        nameMiner = loads['NAME']
         cpu = loads['CPU']
 
     if miner == "":
         print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
         return
    
+        
+
     try:
         url = f"http://mobile-mining.tk/api/v1/get-read-specific.php?tag_name={miner}"
         receive = requests.get(url)
         s = receive.json()
+        print("\033[1;34;40m")   
         print("TAG    =  ",s['tag_name'])
-        print("WALLET =  ",s['wallet'])
+        print("WALLET =  ",s['wallet']+"."+nameMiner)
         print("POOL   =  ",s['pool'])
         print("PASS   =  ",s['password'])
-        print("\n\n")
+        print("\033[00m\n")
         time.sleep(6)
-        os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']} -p {s['password']} -t {cpu}")
+        os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']} -t {cpu}")
     except:
         push = {'MINER': '','CPU': 1}
         with open("set-miner/miner.json", "w") as set:
@@ -89,20 +93,6 @@ while True:
     else:
         os.system("@cls||clear")
         print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

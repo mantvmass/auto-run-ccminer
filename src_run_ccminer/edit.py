@@ -13,6 +13,9 @@ def setMiner():
         minerAPI = input("TAG: ")
         if minerAPI == "":
             raise Exception()
+        nameMiner  = input("NAME: ")
+        if nameMiner == "":
+            nameMiner = "miner01"
         cpuT = int(input("CPU: "))
         if cpuT == "":
             cpuT = cpu_thread-1
@@ -24,6 +27,7 @@ def setMiner():
         time.sleep(3)
     push = {
         'MINER': minerAPI,
+        'NAME': nameMiner,
         'CPU': cpuT
     }
     with open("set-miner/miner.json", "w") as set:

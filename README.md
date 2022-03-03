@@ -1,7 +1,6 @@
 # AUTO RUN CCMINER IN TERMUX
 <a target="_blank" href="LICENSE" title="License: MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
 <br>
-[website config miner](http://mobile-mining.tk/)  
 Setting Step
 ```
 apt-get update
@@ -26,6 +25,7 @@ sh setup.sh
 * หากต้องการหยุดขุดให้ใช้กด ```CTRL + C```
 * หากต้องการเปลี่ยน pool or wallet ใช้คำสั่ง ```edit-miner```
 * หากต้องการเปิดขุด ใช้คำสั่ง ```run-miner```
+* หากต้องการอัพเดทโปรแกรม ใช้คำสั่ง ```run-miner```
 
 ## สนับสนุนนักพัฒนา
 - ชื่อ ```ภูมินท์ มะลิวรรณ```
