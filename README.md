@@ -3,7 +3,7 @@
 <br>
 ## การติดตั้งแบบรวดเร็ว
 ```
-apt-get update -y && apt-get install git -y && git clone https://github.com/mantvmass/auto-run-ccminer && cd auto-run-ccminer && sh setup.sh
+apt-get update -y && apt-get install git -y && git clone https://github.com/mantvmass/auto-run-ccminer && cd auto-run-ccminer && chmod +x setup.sh && sh setup.sh
 ```
 
 ## การติดตั้งตามขั้นตอน
@@ -20,7 +20,7 @@ git clone https://github.com/mantvmass/auto-run-ccminer
 cd auto-run-ccminer
 ```
 ```
-sh setup.sh
+chmod +x setup.sh && sh setup.sh
 ```
 * หลังจากเปิดไฟล์ bash.bashrc เพิ่มบรรทัดแรกเป็น
 - ```run-miner```
