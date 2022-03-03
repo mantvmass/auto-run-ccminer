@@ -1,9 +1,14 @@
 # AUTO RUN CCMINER IN TERMUX
 <a target="_blank" href="LICENSE" title="License: MIT"><img src="https://img.shields.io/badge/License-MIT-blue.svg"></a>
 <br>
-Setting Step
+## การติดตั้งแบบรวดเร็ว
 ```
-apt-get update
+apt-get update -y && apt-get install git -y && git clone https://github.com/mantvmass/auto-run-ccminer && cd auto-run-ccminer && sh setup.sh
+```
+
+## การติดตั้งตามขั้นตอน
+```
+apt-get update -y
 ```
 ```
 apt-get install git -y
