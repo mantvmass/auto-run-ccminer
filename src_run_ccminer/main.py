@@ -29,7 +29,7 @@ def install():
         # os.system("git clone --single-branch -b ARM https://github.com/monkins1010/ccminer")
         os.system("git clone https://github.com/mantvmass/ccminer_mmv")
         os.system("@cls||clear")
-        print("ติดตั้งสำเร็จ")
+        print("\nกำลังติดตั้ง...\n")
     except:
         print("ติดตั้งไม่สำเร็จ!")
 

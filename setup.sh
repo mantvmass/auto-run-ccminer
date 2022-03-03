@@ -9,6 +9,7 @@ apt-get install nano -y
 
 chmod +x edit-miner
 chmod +x run-miner
+chmod +x update-miner
 
 
 apt-get install python3 -y

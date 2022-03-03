@@ -13,7 +13,7 @@ def banner():
     s = receive.json()
 
     os.system("@cls||clear")
-    print(f"Created by.mobile-mining V{versionApp()}")
+    print(f"Created by.mobile-mining V2.1")
     print("---------------------------------------------------") 
     print("\033[96mสนับสนุนนักพัมนา\033[00m\n"
         + " กสิกรไทย: 0608905863\n"

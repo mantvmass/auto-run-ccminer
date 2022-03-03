@@ -1,3 +1,4 @@
+from distutils.version import Version
 import os, requests, json
 from config import versionApp
 
@@ -8,11 +9,11 @@ try:
     url2 = "http://mobile-mining.tk/api/app_update/set_update.php"
     receive = requests.get(url2)
     app = receive.json()
-
     print("\nกำลังอัพเดทเป็นเวอร์ชั่น", verApp[0])
+    err = False
 
 except:
-    print("ไม่สามารถเชื่ิมต่อกับ server!")
+    print("ไม่สามารถเชื่อมต่อกับ server!")
     err = True
 
 if verApp[0] == versionApp():
@@ -38,6 +39,6 @@ else:
             push = {
                 'version': verApp[0]
             }
-            with open("set-miner/miner.json", "w") as set:
-                json.dump(push, set, indent=4)
+            with open("version.json", "w") as version:
+                json.dump(push, Version, indent=4)
             print("\nอัพเดทแล้ว!")
