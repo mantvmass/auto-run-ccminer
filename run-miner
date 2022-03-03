@@ -1,2 +1,5 @@
-cd && cd ../etc/src_run_ccminer
+#!/bin/bash
+
+cd
+cd ../etc/mobile-mining
 python3 main.py

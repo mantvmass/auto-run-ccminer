@@ -19,7 +19,7 @@ python3 -m pip install progress
 python3 -m pip install requests
 
 
-mv src_run_ccminer ../../etc
+mv mobile-mining ../../etc
 mv edit-miner ../../bin
 mv run-miner ../../bin
 mv update-miner ../../bin
@@ -28,7 +28,7 @@ mv update-miner ../../bin
 run-miner
 
 
-cd && cd ../etc/src_run_ccminer/ccminer_mmv
+cd && cd ../etc/mobile-mining/ccminer_mmv
 chmod +x build.sh
 chmod +x configure.sh
 chmod +x autogen.sh
