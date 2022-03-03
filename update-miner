@@ -1,3 +1,2 @@
-cd
-cd ../etc/src_run_ccminer
+cd && cd ../etc/src_run_ccminer
 python3 update.py

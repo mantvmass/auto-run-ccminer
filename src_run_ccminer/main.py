@@ -90,9 +90,11 @@ while True:
         else:
             os.system("@cls||clear")
             print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
+            break
     else:
         os.system("@cls||clear")
         print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
+        break
 
 
 

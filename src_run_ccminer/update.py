@@ -23,22 +23,22 @@ else:
         error = 0
         try:
             for i in range(1,len(app)):
-                if os.path.isfile(app[i]) == True:
                     try:
-                        os.system(f"rm -rf {app[i]}")
-                        os.system(f"wget http://mobile-mining.tk/api/app_update/{app[0]}/{app[i]}")
+                        if os.path.isfile(app[i]) == True:
+                            os.system(f"rm -rf {app[i]}")
+                            os.system(f"wget http://mobile-mining.tk/api/app_update/{app[0]}/{app[i]}")
+                        else:
+                            os.system(f"wget http://mobile-mining.tk/api/app_update/{app[0]}/{app[i]}")
                     except:
                         print("\nเกิดข้อผิดพลาดระหวางการอัพเดท!")
                         error += 1
-                else:
-                    os.system(f"wget http://mobile-mining.tk/api/app_update/{app[0]}/{app[i]}")
         except:
             print("\nเกิดข้อผิดพลาดระหวางการอัพเดท!")
             error += 1
-        if error == 0:
-            push = {
-                'version': verApp[0]
-            }
-            with open("version.json", "w") as version:
-                json.dump(push, Version, indent=4)
-            print("\nอัพเดทแล้ว!")
+    if error == 0:
+        push = {
+            'version': verApp[0]
+        }
+        with open("version.json", "w") as version:
+            json.dump(push, version, indent=4)
+        print("\nอัพเดทแล้ว!")
