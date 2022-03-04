@@ -34,6 +34,9 @@ def install():
         print("ติดตั้งไม่สำเร็จ!")
 
 
+zergpool = ["stratum+tcp://verushash.mine.zergpool.com:3300","stratum+tcp://verushash.na.mine.zergpool.com:3300","stratum+tcp://verushash.eu.mine.zergpool.com:3300","stratum+tcp://verushash.asia.mine.zergpool.com:3300"]
+
+
 # run miner function
 def run():
     banner()
@@ -60,8 +63,13 @@ def run():
         print("POOL   =  ",s['pool'])
         print("PASS   =  ",s['password'])
         print("\033[00m\n")
-        time.sleep(6)
-        os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']} -t {cpu}")
+
+        if s["pool"] in zergpool:
+            time.sleep(4)
+            os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']},ID={nameMiner} -t {cpu}")
+        else:
+            time.sleep(4)
+            os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']} -t {cpu}")
     except:
         push = {'MINER': '','CPU': 1}
         with open("set-miner/miner.json", "w") as set:
