@@ -74,6 +74,8 @@ def run():
         push = {'MINER': '','CPU': 1}
         with open("set-miner/miner.json", "w") as set:
             json.dump(push, set, indent=4)
+        os.system("@cls||clear")
+        print("\nไม่พบการตั้งค่า หรือ การตั้งค่าไม่ถูกต้อง กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
 
     # print(s['id'])
     # print(s['tag_name'])
