@@ -2,6 +2,9 @@ from distutils.version import Version
 import os, requests, json
 from config import versionApp
 
+
+error = 0
+
 try:
     url1 = "http://mobile-mining.tk/api/app_update/versionApp.php"
     receive = requests.get(url1)
@@ -11,27 +14,35 @@ try:
     app = receive.json()
     print("\nกำลังอัพเดทเป็นเวอร์ชั่น", verApp[0])
     err = False
-
 except:
     print("ไม่สามารถเชื่อมต่อกับ server!")
     err = True
 
 if verApp[0] == versionApp():
     print("\nเวอร์ชั่นของคุณเป็นเวอร์ชั่นปัจจุบันอยู่แล้ว!")
+
 else:
     if err == False:
-        error = 0
         try:
             for i in range(1,len(app)):
-                    try:
-                        if os.path.isfile(app[i]) == True:
-                            os.system(f"rm -rf {app[i]}")
-                            os.system(f"wget http://mobile-mining.tk/api/app_update/{app[0]}/{app[i]}")
-                        else:
-                            os.system(f"wget http://mobile-mining.tk/api/app_update/{app[0]}/{app[i]}")
-                    except:
-                        print("\nเกิดข้อผิดพลาดระหวางการอัพเดท!")
-                        error += 1
+
+                try:
+                    update_url = f'http://mobile-mining.tk/api/app_update/{app[0]}/{app[i]}'
+                    wr = requests.get(update_url, allow_redirects=True)
+                    open(f'{app[i]}', 'wb').write(wr.content)
+                except:
+                    print("\nเกิดข้อผิดพลาดระหวางการอัพเดท!")
+                    error += 1
+
+                # try:
+                #     if os.path.isfile(app[i]) == True:
+                #         os.system(f"rm -rf {app[i]}")
+                #         os.system(f"wget http://mobile-mining.tk/api/app_update/{app[0]}/{app[i]}")
+                #     else:
+                #         os.system(f"wget http://mobile-mining.tk/api/app_update/{app[0]}/{app[i]}")
+                # except:
+                #     print("\nเกิดข้อผิดพลาดระหวางการอัพเดท!")
+                #     error += 1
         except:
             print("\nเกิดข้อผิดพลาดระหวางการอัพเดท!")
             error += 1

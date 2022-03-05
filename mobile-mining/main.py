@@ -21,8 +21,6 @@ except ImportError:
 
 
 
-
-
 # install miner function 
 def install():
     try:
@@ -51,26 +49,53 @@ def run():
         print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
         return
    
-        
-
     try:
         url = f"http://mobile-mining.tk/api/v1/get-read-specific.php?tag_name={miner}"
         receive = requests.get(url)
         s = receive.json()
+
         print("\033[1;34;40m")   
         print("TAG    =  ",s['tag_name'])
         print("WALLET =  ",s['wallet']+"."+nameMiner)
         print("POOL   =  ",s['pool'])
-        print("PASS   =  ",s['password'])
-        print("\033[00m\n")
+
 
         if s["pool"] in zergpool:
-            time.sleep(4)
+
+            print("PASS   =  ",s['password']+",ID="+nameMiner)
+            print("\033[00m\n")
+
+            time.sleep(2)
             os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']},ID={nameMiner} -t {cpu}")
         else:
-            time.sleep(4)
+
+            print("PASS   =  ",s['password'])
+            print("\033[00m\n")
+
+            time.sleep(2)
             os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']} -t {cpu}")
     except:
+
+        # try:
+        #     i = 0
+        #     while True:
+        #         if s[i]['tag_name'] == miner:
+        #             if s["pool"] in zergpool:
+        #                 time.sleep(2)
+        #                 os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s[i]['pool']} -u {s[i]['wallet']}.{nameMiner} -p {s[i]['password']},ID={nameMiner} -t {cpu}")
+        #                 break
+        #             else:
+        #                 time.sleep(2)
+        #                 os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s[i]['pool']} -u {s[i]['wallet']}.{nameMiner} -p {s[i]['password']} -t {cpu}")
+        #                 break
+        #         i += 1
+        # except:
+        #     push = {'MINER': '','NAME': '','CPU': 1}
+        #     with open("set-miner/miner.json", "w") as set:
+        #         json.dump(push, set, indent=4)
+        #     os.system("@cls||clear")
+        #     print("\nไม่พบการตั้งค่า หรือ การตั้งค่าไม่ถูกต้อง กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
+
         push = {'MINER': '','NAME': '','CPU': 1}
         with open("set-miner/miner.json", "w") as set:
             json.dump(push, set, indent=4)
@@ -95,8 +120,17 @@ while True:
         break
     if os.path.exists("set-miner") == True:
         if os.path.isfile("set-miner/miner.json") == True:
-            run()
-            break
+            with open("set-miner/miner.json", encoding="utf-8") as set:
+                load = set.read()
+                loads = json.loads(load)
+                miner = loads['MINER']
+            if miner != "":
+                run()
+                break
+            else:
+                os.system("@cls||clear")
+                print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
+                break
         else:
             os.system("@cls||clear")
             print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
