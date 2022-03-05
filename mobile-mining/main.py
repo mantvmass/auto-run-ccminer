@@ -71,7 +71,7 @@ def run():
             time.sleep(4)
             os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']} -t {cpu}")
     except:
-        push = {'MINER': '','CPU': 1}
+        push = {'MINER': '','NAME': '','CPU': 1}
         with open("set-miner/miner.json", "w") as set:
             json.dump(push, set, indent=4)
         os.system("@cls||clear")
