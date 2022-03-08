@@ -44,7 +44,7 @@ def runOnline():
         cpu = loads['cpu']
    
     try:
-        url = f"http://mobile-mining.tk/api/v1/get-read-specific.php?tag_name={miner}"
+        url = f"https://nutders.com/api/v1/get-read-specific.php?tag_name={miner}"
         receive = requests.get(url)
         s = receive.json()
 
@@ -52,6 +52,7 @@ def runOnline():
         print("TAG    =  ",s['tag_name'])
         print("WALLET =  ",s['wallet']+"."+nameMiner)
         print("POOL   =  ",s['pool'])
+        print("CPU    =  ",cpu)
 
 
         if s["pool"] in zergpool:
@@ -94,7 +95,7 @@ def runOnline():
         with open("set-miner/online.json", "w") as set:
             json.dump(push, set, indent=4)
         os.system("@cls||clear")
-        print("\n\n\033[1;31;40mไม่พบการตั้งค่า หรือ การตั้งค่าไม่ถูกต้อง\nกรุณาตั้งค่าใหม่โดยใช้คำสั่ง edit-miner\033[0m\n\n")
+        print("\n\n\033[1;31;40mไม่พบการตั้งค่านี้บนเว็บ กรุณาตั้งค่าที่ nutders.com \nและตั่งค่าบนมือถือใหม่ด้วยคำสั่ง edit-miner\033[0m\n\n")
 
     # print(s['id'])
     # print(s['tag_name'])
@@ -120,8 +121,9 @@ def runOffline():
             print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
             return
         print("\033[1;34;40m")   
-        print("POOL   =",pool)
         print("WALLET =",wallet)
+        print("POOL   =",pool)
+        print("CPU    =",cpu)
         print("PASS   =",password)
         print("\033[00m\n")
 

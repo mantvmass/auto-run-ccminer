@@ -29,7 +29,7 @@ def banner():
     if active == "on":
         err = 0
         try:
-            url = "http://mobile-mining.tk/api/app_update/versionApp.php"
+            url = "https://nutders.com/api/app_update/versionApp.php"
             receive = requests.get(url)
             s = receive.json()
         except:
