@@ -6,7 +6,7 @@ from config import versionApp
 error = 0
 
 try:
-    url1 = "http://mobile-mining.tk/api/app_update/versionApp.php"
+    url1 = "https://nutders.com/api/app_update/versionApp.php"
     receive = requests.get(url1)
     verApp = receive.json()
     url2 = "http://mobile-mining.tk/api/app_update/set_update.php"

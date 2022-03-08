@@ -114,10 +114,10 @@ def OffMiner():
 
     push = {
         'status': True,
-        'Pool': pool,
-        'Wallet': wallet,
-        'Pass': password,
-        'Cpu': cpu
+        'pool': pool,
+        'wallet': wallet,
+        'pass': password,
+        'cpu': cpu
     }
     with open("set-miner/offline.json", "w") as set:
         json.dump(push, set, indent=4)
@@ -126,9 +126,9 @@ def OffMiner():
         with open("set-miner/online.json", encoding="utf-8") as set:
             load = set.read()
             loads = json.loads(load)
-            minerAPI = loads['MINER']
-            nameMiner = loads['NAME']
-            cpuT = loads['CPU']
+            minerAPI = loads['miner']
+            nameMiner = loads['name']
+            cpuT = loads['cpu']
 
         push = {
         'status': False,

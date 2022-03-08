@@ -119,8 +119,13 @@ def runOffline():
         if pool == "" or wallet == "":
             print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
             return
-        print("ccminer CPU3.7 for VerusHash v2.1 - 2.2 by Monkins1010 based on ccminer")
-        print("Originally based on Christian Buchner and Christian H. project")
+        print("\033[1;34;40m")   
+        print("POOL   =",pool)
+        print("WALLET =",wallet)
+        print("PASS   =",password)
+        print("\033[00m\n")
+
+
         os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {pool} -u {wallet} -p {password} -t {cpu}")
     except:
         push = {'status': False,'pool': '','wallet': '','pass': '','cpu': ''}
