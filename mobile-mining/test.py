@@ -3,15 +3,30 @@ import requests, json, urllib
 
 
 
+
+
+
+# [  TEST ERROR VALUE  ]
+# n = 0
+# try:
+#     if int(input(">>>")) == 3:
+#         print("l")
+#     else:
+#         n += 5
+# except:
+#     n+=1
+# print(n)
+
+
+
+
+
+
+
 # [  GET UPDATE APP API  ]
 # url = 'http://mobile-mining.tk/api/app_update/av2-2/main.py'
 # r = requests.get(url, allow_redirects=True)
 # open('main.py', 'wb').write(r.content)
-
-
-
-
-
 
 
 

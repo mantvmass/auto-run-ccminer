@@ -1,6 +1,7 @@
 import os
 import json
 import time
+from matplotlib.pyplot import bar_label
 import pip
 from config import banner
 
@@ -33,21 +34,15 @@ def install():
 
 
 zergpool = ["stratum+tcp://verushash.mine.zergpool.com:3300","stratum+tcp://verushash.na.mine.zergpool.com:3300","stratum+tcp://verushash.eu.mine.zergpool.com:3300","stratum+tcp://verushash.asia.mine.zergpool.com:3300"]
-
-
 # run miner function
-def run():
+def runOnline():
     banner()
-    with open("set-miner/miner.json", encoding="utf-8") as set:
+    with open("set-miner/online.json", encoding="utf-8") as set:
         load = set.read()
         loads = json.loads(load)
-        miner = loads['MINER']
-        nameMiner = loads['NAME']
-        cpu = loads['CPU']
-
-    if miner == "":
-        print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
-        return
+        miner = loads['miner']
+        nameMiner = loads['name']
+        cpu = loads['cpu']
    
     try:
         url = f"http://mobile-mining.tk/api/v1/get-read-specific.php?tag_name={miner}"
@@ -96,17 +91,51 @@ def run():
         #     os.system("@cls||clear")
         #     print("\nไม่พบการตั้งค่า หรือ การตั้งค่าไม่ถูกต้อง กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
 
-        push = {'MINER': '','NAME': '','CPU': 1}
-        with open("set-miner/miner.json", "w") as set:
+        push = {'status': False,'miner': '','name': '','cpu': 1}
+        with open("set-miner/online.json", "w") as set:
             json.dump(push, set, indent=4)
         os.system("@cls||clear")
-        print("\nไม่พบการตั้งค่า หรือ การตั้งค่าไม่ถูกต้อง กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
+        print("\n\n\033[1;31;40mไม่พบการตั้งค่า หรือ การตั้งค่าไม่ถูกต้อง\nกรุณาตั้งค่าใหม่โดยใช้คำสั่ง edit-miner\033[0m\n\n")
 
     # print(s['id'])
     # print(s['tag_name'])
     # print(s['pool'])
     # print(s['wallet'])
     # print(s['password'])
+
+
+
+
+
+def runOffline():
+    banner()
+    try:
+        with open("set-miner/offline.json", encoding="utf-8") as set:
+            load = set.read()
+            loads = json.loads(load)
+            pool = loads['pool']
+            wallet = loads['wallet']
+            password = loads['pass']
+            cpu = loads['cpu']
+        if pool == "" or wallet == "":
+            print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
+            return
+        print("ccminer CPU3.7 for VerusHash v2.1 - 2.2 by Monkins1010 based on ccminer")
+        print("Originally based on Christian Buchner and Christian H. project")
+        os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {pool} -u {wallet} -p {password} -t {cpu}")
+    except:
+        push = {'status': False,'pool': '','wallet': '','pass': '','cpu': ''}
+        with open("set-miner/offline.json", "w") as set:
+            json.dump(push, set, indent=4)
+        os.system("@cls||clear")
+        print("\n\n\033[1;31;40mไม่พบการตั้งค่า หรือ การตั้งค่าไม่ถูกต้อง\nกรุณาตั้งค่าใหม่โดยใช้คำสั่ง edit-miner\033[0m\n\n")
+
+
+
+
+
+
+
 
 
 while True:
@@ -118,27 +147,28 @@ while True:
     if os.path.exists("ccminer_mmv") == False:
         install()
         break
-    if os.path.exists("set-miner") == True:
-        if os.path.isfile("set-miner/miner.json") == True:
-            with open("set-miner/miner.json", encoding="utf-8") as set:
-                load = set.read()
-                loads = json.loads(load)
-                miner = loads['MINER']
-            if miner != "":
-                run()
-                break
-            else:
-                os.system("@cls||clear")
-                print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
-                break
-        else:
-            os.system("@cls||clear")
-            print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
-            break
+    # if os.path.isfile("active.json") == True:
+    with open("active.json", encoding="utf-8") as set:
+        load = set.read()
+        loads = json.loads(load)
+        status = loads['status']
+    if status == "on":
+        runOnline()
+        break
+    elif status == "off":
+        runOffline()
+        break
     else:
         os.system("@cls||clear")
-        print("ไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner")
+        print("\n\n\033[1;31;40mไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner\033[0m\n\n")
         break
+
+
+    # else:
+    #     os.system("@cls||clear")
+    #     print("\n\n\033[1;31;40mไม่พบการตั้งค่า miner กรุณาตั้งค่าโดยใช้คำสั่ง edit-miner\033[0m\n\n")
+    #     break
+
 
 
 
