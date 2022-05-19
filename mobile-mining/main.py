@@ -81,9 +81,9 @@ def runOnline():
                 time.sleep(2)
                 os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']} -t {cpu}")
         except:
-            push = {'status': False,'miner': '','name': '','cpu': 1}
-            with open("set-miner/online.json", "w") as set:
-                json.dump(push, set, indent=4)
+            # push = {'status': False,'miner': '','name': '','cpu': 1}
+            # with open("set-miner/online.json", "w") as set:
+            #     json.dump(push, set, indent=4)
             os.system("@cls||clear")
             print("\n\n\033[1;31;40mไม่พบการตั้งค่านี้บนเว็บ กรุณาตั้งค่าที่ nutders.com \nและตั่งค่าบนมือถือใหม่ด้วยคำสั่ง edit-miner\033[0m\n\n")
 
