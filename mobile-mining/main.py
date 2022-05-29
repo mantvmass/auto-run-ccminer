@@ -34,7 +34,7 @@ def connectNetwork():
 def install():
     try:
         # os.system("git clone --single-branch -b ARM https://github.com/monkins1010/ccminer")
-        os.system("git clone https://github.com/mantvmass/ccminer_mmv")
+        os.system("git clone https://github.com/mantvmass/ccminer")
         os.system("@cls||clear")
         print("\nกำลังติดตั้ง...\n")
     except:
@@ -72,14 +72,14 @@ def runOnline():
                 print("\033[00m\n")
 
                 time.sleep(2)
-                os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']},ID={nameMiner} -t {cpu}")
+                os.system(f"cd ccminer && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']},ID={nameMiner} -t {cpu}")
             else:
 
                 print("PASS   =  ",s['password'])
                 print("\033[00m\n")
 
                 time.sleep(2)
-                os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']} -t {cpu}")
+                os.system(f"cd ccminer && ./ccminer -a verus -o {s['pool']} -u {s['wallet']}.{nameMiner} -p {s['password']} -t {cpu}")
         except:
             # push = {'status': False,'miner': '','name': '','cpu': 1}
             # with open("set-miner/online.json", "w") as set:
@@ -123,7 +123,7 @@ def runOffline():
         print("\033[00m\n")
 
 
-        os.system(f"cd ccminer_mmv && ./ccminer -a verus -o {pool} -u {wallet} -p {password} -t {cpu}")
+        os.system(f"cd ccminer && ./ccminer -a verus -o {pool} -u {wallet} -p {password} -t {cpu}")
     except:
         push = {'status': False,'pool': '','wallet': '','pass': '','cpu': ''}
         with open("set-miner/offline.json", "w") as set:
@@ -140,7 +140,7 @@ while True:
         for i in range(100):
             time.sleep(0.05)
             bar.next()
-    if os.path.exists("ccminer_mmv") == False:
+    if os.path.exists("ccminer") == False:
         install()
         break
     # if os.path.isfile("active.json") == True:
