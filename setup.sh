@@ -28,7 +28,7 @@ mv run-miner ../../bin
 run-miner
 
 
-cd && cd ../etc/mobile-mining/ccminer_mmv
+cd && cd ../etc/mobile-mining/ccminer
 chmod +x build.sh
 chmod +x configure.sh
 chmod +x autogen.sh
